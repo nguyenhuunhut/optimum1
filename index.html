@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Optimum Journey Timeline</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="bg-grid" aria-hidden="true"></div>
+    <div class="glow glow-left" aria-hidden="true"></div>
+    <div class="glow glow-right" aria-hidden="true"></div>
+
+    <main class="app">
+      <header class="hero">
+        <p class="hero-tag">OPTIMUM // MEMORY LOGS</p>
+        <h1>Optimum Journey Timeline</h1>
+        <p class="hero-sub">
+          Enter your story on the left, and see a vertical timeline with 3 fixed sections on the right.
+        </p>
+        <div class="hero-network" aria-hidden="true">
+          <svg class="network-svg" viewBox="0 0 900 180" preserveAspectRatio="none">
+            <path class="network-line network-line-a" d="M20 140 C150 40, 280 160, 420 84 S700 42, 880 115" />
+            <path class="network-line network-line-b" d="M30 88 C170 158, 280 38, 458 106 S760 156, 875 72" />
+            <path class="network-line network-line-c" d="M40 30 C200 86, 320 16, 490 56 S760 108, 885 28" />
+
+            <circle class="network-node node-1" cx="135" cy="77" r="5" />
+            <circle class="network-node node-2" cx="324" cy="127" r="5" />
+            <circle class="network-node node-3" cx="518" cy="62" r="5" />
+            <circle class="network-node node-4" cx="707" cy="108" r="5" />
+
+            <circle class="network-pulse pulse-1" cx="324" cy="127" r="10" />
+            <circle class="network-pulse pulse-2" cx="707" cy="108" r="10" />
+
+            <circle class="network-dot dot-a" r="3.6">
+              <animateMotion dur="4.4s" repeatCount="indefinite" rotate="auto">
+                <mpath href="#line-a-ref" />
+              </animateMotion>
+            </circle>
+            <circle class="network-dot dot-b" r="3.6">
+              <animateMotion dur="5.2s" begin="-1.2s" repeatCount="indefinite" rotate="auto">
+                <mpath href="#line-b-ref" />
+              </animateMotion>
+            </circle>
+            <circle class="network-dot dot-c" r="3.6">
+              <animateMotion dur="6.1s" begin="-2.4s" repeatCount="indefinite" rotate="auto">
+                <mpath href="#line-c-ref" />
+              </animateMotion>
+            </circle>
+
+            <path
+              id="line-a-ref"
+              d="M20 140 C150 40, 280 160, 420 84 S700 42, 880 115"
+              fill="none"
+              opacity="0"
+            />
+            <path
+              id="line-b-ref"
+              d="M30 88 C170 158, 280 38, 458 106 S760 156, 875 72"
+              fill="none"
+              opacity="0"
+            />
+            <path
+              id="line-c-ref"
+              d="M40 30 C200 86, 320 16, 490 56 S760 108, 885 28"
+              fill="none"
+              opacity="0"
+            />
+          </svg>
+        </div>
+      </header>
+
+      <section class="split-layout">
+        <aside class="composer" aria-label="Journey input">
+          <h2>Journey Input</h2>
+          <form id="journey-form" class="form-grid">
+            <label for="name-input">
+              Your Name
+              <input
+                id="name-input"
+                type="text"
+                maxlength="40"
+                required
+                placeholder="Example: Nhut Nguyen"
+              />
+            </label>
+
+            <label for="found-input">
+              When I found Optimum
+              <textarea
+                id="found-input"
+                maxlength="280"
+                required
+                placeholder="Example: I discovered Optimum when..."
+              ></textarea>
+            </label>
+
+            <label for="did-input">
+              What I did
+              <textarea
+                id="did-input"
+                maxlength="280"
+                required
+                placeholder="Example: I started building daily habits..."
+              ></textarea>
+            </label>
+
+            <label for="believe-input">
+              What I believe
+              <textarea
+                id="believe-input"
+                maxlength="280"
+                required
+                placeholder="Example: I believe consistency..."
+              ></textarea>
+            </label>
+
+            <button type="submit">Update Timeline</button>
+          </form>
+        </aside>
+
+        <section class="timeline-panel" aria-label="Journey timeline">
+          <div class="timeline-actions">
+            <button id="save-image" type="button">Save Image</button>
+          </div>
+
+          <div id="timeline-capture" class="timeline-capture">
+            <div class="project-brand">
+              <img class="project-brand-logo" src="assets/logo-white.png" alt="Optimum logo" />
+              <div class="project-brand-info">
+                <p class="project-brand-text">OPTIMUM JOURNEY</p>
+                <p id="name-output" class="project-brand-name">Your Name</p>
+              </div>
+            </div>
+
+            <div class="timeline-wrap">
+              <div class="timeline-line" aria-hidden="true"></div>
+              <div class="timeline" id="timeline">
+                <article class="timeline-item" data-label="01">
+                  <div class="dot" aria-hidden="true"></div>
+                  <div class="card">
+                    <figure class="timeline-media">
+                      <img src="assets/timeline1.png" alt="Timeline image 1" />
+                    </figure>
+                    <div class="card-content">
+                      <p class="meta">LOG 01 · ORIGIN</p>
+                      <h3>When I found Optimum</h3>
+                      <p id="found-output">
+                        I found Optimum while searching for one place to unify my learning goals,
+                        focus, and growth into a clear journey.
+                      </p>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="timeline-item" data-label="02">
+                  <div class="dot" aria-hidden="true"></div>
+                  <div class="card">
+                    <figure class="timeline-media">
+                      <img src="assets/timeline2.png" alt="Timeline image 2" />
+                    </figure>
+                    <div class="card-content">
+                      <p class="meta">LOG 02 · ACTION</p>
+                      <h3>What I did</h3>
+                      <p id="did-output">
+                        I set weekly targets, broke habits into small steps, and tracked progress
+                        daily to keep my momentum steady.
+                      </p>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="timeline-item" data-label="03">
+                  <div class="dot" aria-hidden="true"></div>
+                  <div class="card">
+                    <figure class="timeline-media">
+                      <img src="assets/timeline3.png" alt="Timeline image 3" />
+                    </figure>
+                    <div class="card-content">
+                      <p class="meta">LOG 03 · BELIEF</p>
+                      <h3>What I believe</h3>
+                      <p id="believe-output">
+                        I believe sustainable growth comes from small, consistent actions every
+                        day.
+                      </p>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <footer class="footer">
+        <p>Created by <a href="https://twitter.com/nguyenhuunhut1" target="_blank">@nguyenhuunhut1</a></p>
+      </footer>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
